@@ -31,4 +31,12 @@ public class CustomerController {
     }
 
 
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO){
+        customerService.updateCustomer(customerDTO);
+        return new ResponseUtil(200,"Update Success",null);
+
+    }
+
+
 }
