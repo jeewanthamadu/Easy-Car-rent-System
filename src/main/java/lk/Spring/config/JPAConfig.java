@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 import java.net.PortUnreachableException;
 
 @Configuration
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "lk.Spring.repo")
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 public class JPAConfig {
