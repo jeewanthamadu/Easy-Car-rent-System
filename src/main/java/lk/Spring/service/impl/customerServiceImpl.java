@@ -5,6 +5,7 @@ import lk.Spring.entity.Customer;
 import lk.Spring.repo.CustomerRepo;
 import lk.Spring.service.CustomerService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,11 +59,20 @@ public class customerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO searchCustomer(String id) {
-        return null;
+
+        if (repo.existsById(id)) {
+            return mapper.map(repo.findById(id).get(),CustomerDTO.class);
+        }else {
+            throw new RuntimeException("Invalid Search");
+        }
+
     }
+
 
     @Override
     public List<CustomerDTO> getAllCustomer() {
-        return null;
+
+        return mapper.map(repo.findAll(),new TypeToken<List<CustomerDTO>>(){
+         }.getType());
     }
 }
