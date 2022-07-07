@@ -37,6 +37,12 @@ public class customerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomer(String id) {
 
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+        }else {
+            throw new RuntimeException("Delete Failed");
+        }
+
     }
 
     @Override
