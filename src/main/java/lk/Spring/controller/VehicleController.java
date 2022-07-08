@@ -1,7 +1,6 @@
 package lk.Spring.controller;
 
 
-import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.VehicleDTO;
 import lk.Spring.service.VehicleService;
 import lk.Spring.util.ResponseUtil;
@@ -18,6 +17,7 @@ public class VehicleController {
     @Autowired
     VehicleService vehicleService;
 
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@ModelAttribute VehicleDTO vehicleDTO){
@@ -31,6 +31,7 @@ public class VehicleController {
         vehicleService.deleteVehicle(id);
         return new ResponseUtil(200,"Deleted Success",null);
     }
+
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateVehicle(@RequestBody VehicleDTO vehicleDTO){

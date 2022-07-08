@@ -18,4 +18,5 @@ public class RatesDTO {
     private int free_Km_Month;
     private double extra_Km_Price;
 
+
 }
