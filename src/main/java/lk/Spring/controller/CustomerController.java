@@ -37,6 +37,7 @@ public class CustomerController {
         return new ResponseUtil(200,"Update Success",null);
     }
 
+
     @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchCustomer(@PathVariable String id){
         return new ResponseUtil(200,"Done",customerService.searchCustomer(id));
@@ -47,5 +48,6 @@ public class CustomerController {
     public ResponseUtil getAllCustomers (){
         return new ResponseUtil(200,"Done",customerService.getAllCustomer());
     }
+
 
 }
