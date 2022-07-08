@@ -53,8 +53,12 @@ public class Vehicle_TypeServiceImpl implements Vehicle_TypeService {
     }
 
     @Override
-    public CustomerDTO searchVehicleType(String id) {
-        return null;
+    public Vehicle_TypeDTO searchVehicleType(String id) {
+        if (repo.existsById(id)) {
+            return mapper.map(repo.findById(id).get(),Vehicle_TypeDTO.class);
+        }else {
+            throw new RuntimeException("Invalid Search");
+        }
     }
 
     @Override

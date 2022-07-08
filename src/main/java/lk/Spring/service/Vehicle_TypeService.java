@@ -10,7 +10,7 @@ public interface Vehicle_TypeService {
     void saveVehicleType (Vehicle_TypeDTO Vehicle_typeDTO);
     void deleteVehicleType (String id);
     void updateVehicleType (Vehicle_TypeDTO Vehicle_typeDTO);
-    CustomerDTO searchVehicleType(String id);
+    Vehicle_TypeDTO searchVehicleType(String id);
     List<Vehicle_TypeDTO> getAllVehicleTypes();
 
 }
