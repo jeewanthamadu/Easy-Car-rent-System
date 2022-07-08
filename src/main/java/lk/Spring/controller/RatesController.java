@@ -31,11 +31,15 @@ public class RatesController {
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateCustomer(@RequestBody RatesDTO ratesDTO){
+    public ResponseUtil updateRate(@RequestBody RatesDTO ratesDTO){
         ratesService.updateRate(ratesDTO);
         return new ResponseUtil(200,"Update Success",null);
     }
 
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchRate(@PathVariable String id){
+        return new ResponseUtil(200,"Done",ratesService.searchRate(id));
+    }
 
 
 

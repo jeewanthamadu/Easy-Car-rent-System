@@ -1,5 +1,6 @@
 package lk.Spring.service.impl;
 
+import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.RatesDTO;
 import lk.Spring.entity.Customer;
 import lk.Spring.entity.Rates;
@@ -50,7 +51,11 @@ public class RatesServiceImpl implements RatesService {
 
     @Override
     public RatesDTO searchRate(String id) {
-        return null;
+        if (repo.existsById(id)) {
+            return mapper.map(repo.findById(id).get(), RatesDTO.class);
+        }else {
+            throw new RuntimeException("Invalid Search");
+        }
     }
 
     @Override
