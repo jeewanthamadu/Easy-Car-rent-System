@@ -1,5 +1,6 @@
 package lk.Spring.controller;
 
+import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.RatesDTO;
 import lk.Spring.service.RatesService;
 import lk.Spring.util.ResponseUtil;
@@ -23,7 +24,17 @@ public class RatesController {
     }
 
 
+    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteRate(@RequestParam String id){
+        ratesService.deleteRate(id);
+        return new ResponseUtil(200,"Deleted Success",null);
+    }
 
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCustomer(@RequestBody RatesDTO ratesDTO){
+        ratesService.updateRate(ratesDTO);
+        return new ResponseUtil(200,"Update Success",null);
+    }
 
 
 

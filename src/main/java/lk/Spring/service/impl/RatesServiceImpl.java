@@ -32,12 +32,20 @@ public class RatesServiceImpl implements RatesService {
 
     @Override
     public void deleteRate(String id) {
-
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+        }else {
+            throw new RuntimeException("Delete Failed");
+        }
     }
 
     @Override
     public void updateRate(RatesDTO ratesDTO) {
-
+        if (repo.existsById(ratesDTO.getRate_Id())) {
+            repo.save(mapper.map(ratesDTO, Rates.class));
+        }else {
+            throw new RuntimeException("Update Failed");
+        }
     }
 
     @Override
