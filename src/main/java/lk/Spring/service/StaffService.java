@@ -10,7 +10,7 @@ public interface StaffService {
     void saveStaff (StaffDTO staffDTO);
     void deleteStaff (String id);
     void updateStaff (StaffDTO staffDTO);
-    CustomerDTO searchStaff(String id);
+    StaffDTO searchStaff(String id);
     List<StaffDTO> getAllStaff();
 
 }

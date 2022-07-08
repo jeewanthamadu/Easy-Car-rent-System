@@ -1,6 +1,7 @@
 package lk.Spring.controller;
 
 
+import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.StaffDTO;
 import lk.Spring.service.StaffService;
 import lk.Spring.util.ResponseUtil;
@@ -33,8 +34,16 @@ public class StaffController {
     }
 
 
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateStaff(@RequestBody StaffDTO staffDTO){
+        staffService.updateStaff(staffDTO);
+        return new ResponseUtil(200,"Update Success",null);
+    }
 
-
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchStaff(@PathVariable String id){
+        return new ResponseUtil(200,"Done",staffService.searchStaff(id));
+    }
 
 
 

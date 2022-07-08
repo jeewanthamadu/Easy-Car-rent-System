@@ -2,6 +2,7 @@ package lk.Spring.service.impl;
 
 import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.StaffDTO;
+import lk.Spring.entity.Customer;
 import lk.Spring.entity.Staff;
 import lk.Spring.repo.StaffRepo;
 import lk.Spring.service.StaffService;
@@ -42,12 +43,20 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public void updateStaff(StaffDTO staffDTO) {
-
+        if (repo.existsById(staffDTO.getStaff_Id())) {
+            repo.save(mapper.map(staffDTO, Staff.class));
+        }else {
+            throw new RuntimeException("Update Failed");
+        }
     }
 
     @Override
-    public CustomerDTO searchStaff(String id) {
-        return null;
+    public StaffDTO searchStaff(String id) {
+        if (repo.existsById(id)) {
+            return mapper.map(repo.findById(id).get(),StaffDTO.class);
+        }else {
+            throw new RuntimeException("Invalid Search");
+        }
     }
 
     @Override
