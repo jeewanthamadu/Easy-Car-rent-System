@@ -32,4 +32,23 @@ public class VehicleController {
         return new ResponseUtil(200,"Deleted Success",null);
     }
 
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateVehicle(@RequestBody VehicleDTO vehicleDTO){
+        vehicleService.updateVehicle(vehicleDTO);
+        return new ResponseUtil(200,"Update Success",null);
+    }
+
+
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchVehicle(@PathVariable String id){
+        return new ResponseUtil(200,"Done",vehicleService.searchVehicle(id));
+    }
+
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllVehicle (){
+        return new ResponseUtil(200,"Done",vehicleService.getAllVehicles());
+    }
+
+
 }
