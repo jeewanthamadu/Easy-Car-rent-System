@@ -46,5 +46,12 @@ public class StaffController {
     }
 
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllStaff (){
+        return new ResponseUtil(200,"Done",staffService.getAllStaff());
+    }
+
+
+
 
 }

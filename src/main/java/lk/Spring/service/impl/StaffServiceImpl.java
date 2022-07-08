@@ -7,6 +7,7 @@ import lk.Spring.entity.Staff;
 import lk.Spring.repo.StaffRepo;
 import lk.Spring.service.StaffService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,6 +62,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public List<StaffDTO> getAllStaff() {
-        return null;
+        return mapper.map(repo.findAll(),new TypeToken<List<StaffDTO>>(){
+        }.getType());
     }
 }
