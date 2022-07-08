@@ -28,7 +28,7 @@ public class RatesServiceImpl implements RatesService {
         if (!repo.existsById(ratesDTO.getRate_Id())){
             repo.save(mapper.map(ratesDTO, Rates.class));
         }else {
-            throw new RuntimeException("Customer Already Saved..");
+            throw new RuntimeException("Rate Already Saved..");
         }
     }
 

@@ -21,7 +21,6 @@ public class CustomerController {
     public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO customerDTO){
         customerService.saveCustomer(customerDTO);
         return new ResponseUtil(200,"Saved",null);
-
     }
 
     @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)

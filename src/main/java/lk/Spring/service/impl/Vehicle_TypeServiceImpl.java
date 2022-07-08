@@ -31,7 +31,7 @@ public class Vehicle_TypeServiceImpl implements Vehicle_TypeService {
         if (!repo.existsById(Vehicle_typeDTO.getVehicle_Type_Id())){
             repo.save(mapper.map(Vehicle_typeDTO, Vehicle_Type.class));
         }else {
-            throw new RuntimeException("Customer Already Saved..");
+            throw new RuntimeException("Vehicle Type Already Saved..");
         }
     }
 
