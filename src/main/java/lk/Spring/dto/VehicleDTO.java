@@ -1,10 +1,13 @@
 package lk.Spring.dto;
 
 
+import lk.Spring.entity.Rates;
+import lk.Spring.entity.Vehicle_Type;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,5 +23,7 @@ public class VehicleDTO {
     private String status;
     private String fuel_Type;
     private String running_Km;
+    private Rates rates;
+    private Vehicle_Type vehicleType;
 
 }
