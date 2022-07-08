@@ -8,6 +8,7 @@ import lk.Spring.repo.CustomerRepo;
 import lk.Spring.repo.Vehicle_TypeRepo;
 import lk.Spring.service.Vehicle_TypeService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,6 +64,7 @@ public class Vehicle_TypeServiceImpl implements Vehicle_TypeService {
 
     @Override
     public List<Vehicle_TypeDTO> getAllVehicleTypes() {
-        return null;
+        return mapper.map(repo.findAll(),new TypeToken<List<Vehicle_TypeDTO>>(){
+        }.getType());
     }
 }

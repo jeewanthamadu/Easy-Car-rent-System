@@ -45,6 +45,10 @@ public class Vehicle_TypeController {
         return new ResponseUtil(200,"Done",vehicle_typeService.searchVehicleType(id));
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllVehicleType (){
+        return new ResponseUtil(200,"Done",vehicle_typeService.getAllVehicleTypes());
+    }
 
 
 
