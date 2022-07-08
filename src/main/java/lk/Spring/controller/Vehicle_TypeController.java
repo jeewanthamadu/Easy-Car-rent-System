@@ -27,4 +27,19 @@ public class Vehicle_TypeController {
     }
 
 
+    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteVehicleType(@RequestParam String id){
+       vehicle_typeService.deleteVehicleType(id);
+        return new ResponseUtil(200,"Deleted Success",null);
+    }
+
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateVehicleType(@RequestBody Vehicle_TypeDTO vehicleTypeDTO){
+        vehicle_typeService.updateVehicleType(vehicleTypeDTO);
+        return new ResponseUtil(200,"Update Success",null);
+    }
+
+
+
 }

@@ -36,12 +36,20 @@ public class Vehicle_TypeServiceImpl implements Vehicle_TypeService {
 
     @Override
     public void deleteVehicleType(String id) {
-
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+        }else {
+            throw new RuntimeException("Delete Failed");
+        }
     }
 
     @Override
-    public void updateVehicleType(Vehicle_TypeDTO Vehicle_typeDTO) {
-
+    public void updateVehicleType(Vehicle_TypeDTO vehicleTypeDTO) {
+        if (repo.existsById(vehicleTypeDTO.getVehicle_Type_Id())) {
+            repo.save(mapper.map(vehicleTypeDTO,Vehicle_Type.class));
+        }else {
+            throw new RuntimeException("Update Failed");
+        }
     }
 
     @Override
