@@ -1,8 +1,7 @@
 package lk.Spring.service.impl;
 
-import lk.Spring.dto.CustomerDTO;
+
 import lk.Spring.dto.StaffDTO;
-import lk.Spring.entity.Customer;
 import lk.Spring.entity.Staff;
 import lk.Spring.repo.StaffRepo;
 import lk.Spring.service.StaffService;

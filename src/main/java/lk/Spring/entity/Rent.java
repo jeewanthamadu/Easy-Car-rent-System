@@ -1,6 +1,6 @@
 package lk.Spring.entity;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.LineInputStream;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +26,6 @@ public class Rent {
     @JoinColumn(name = "id",referencedColumnName = "id",nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "rent",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rent",cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private List<Rent_Detail> rent_details;
 }

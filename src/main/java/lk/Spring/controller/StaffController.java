@@ -1,7 +1,6 @@
 package lk.Spring.controller;
 
 
-import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.StaffDTO;
 import lk.Spring.service.StaffService;
 import lk.Spring.util.ResponseUtil;
