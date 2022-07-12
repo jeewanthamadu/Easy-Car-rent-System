@@ -1,6 +1,7 @@
 package lk.Spring.controller;
 
 
+import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.DriverDTO;
 import lk.Spring.service.DriverService;
 import lk.Spring.util.ResponseUtil;
@@ -28,6 +29,12 @@ public class DriverController {
     public ResponseUtil deleteDriver(@RequestParam String id){
         driverService.deleteDriver(id);
         return new ResponseUtil(200,"Deleted Success",null);
+    }
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCustomer(@RequestBody DriverDTO driverDTO){
+        driverService.updateDriver(driverDTO);
+        return new ResponseUtil(200,"Update Success",null);
     }
 
     @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)

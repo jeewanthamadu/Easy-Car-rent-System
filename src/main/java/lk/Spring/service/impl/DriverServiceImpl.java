@@ -1,11 +1,13 @@
 package lk.Spring.service.impl;
 
+import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.DriverDTO;
 import lk.Spring.entity.Customer;
 import lk.Spring.entity.Driver;
 import lk.Spring.repo.DriverRepo;
 import lk.Spring.service.DriverService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,11 +52,16 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public DriverDTO searchDriver(String id) {
-        return null;
+        if (repo.existsById(id)) {
+            return mapper.map(repo.findById(id).get(), DriverDTO.class);
+        }else {
+            throw new RuntimeException("Invalid Search");
+        }
     }
 
     @Override
     public List<DriverDTO> getAllDriver() {
-        return null;
+        return mapper.map(repo.findAll(),new TypeToken<List<DriverDTO>>(){
+        }.getType());
     }
 }
