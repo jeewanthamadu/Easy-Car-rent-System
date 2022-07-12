@@ -1,9 +1,7 @@
 package lk.Spring.service.impl;
 
 import lk.Spring.dto.DriverDTO;
-import lk.Spring.entity.Customer;
 import lk.Spring.entity.Driver;
-import lk.Spring.repo.CustomerRepo;
 import lk.Spring.repo.DriverRepo;
 import lk.Spring.service.DriverService;
 import org.modelmapper.ModelMapper;
@@ -33,7 +31,11 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void deleteDriver(String id) {
-
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+        }else {
+            throw new RuntimeException("Delete Failed");
+        }
     }
 
     @Override

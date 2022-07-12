@@ -1,9 +1,7 @@
 package lk.Spring.controller;
 
 
-import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.DriverDTO;
-import lk.Spring.service.CustomerService;
 import lk.Spring.service.DriverService;
 import lk.Spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,11 @@ public class DriverController {
         return new ResponseUtil(200,"Saved",null);
     }
 
-
+    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteDriver(@RequestParam String id){
+        driverService.deleteDriver(id);
+        return new ResponseUtil(200,"Deleted Success",null);
+    }
 
 
 }
