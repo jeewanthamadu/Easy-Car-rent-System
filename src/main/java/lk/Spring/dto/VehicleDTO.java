@@ -22,7 +22,7 @@ public class VehicleDTO {
     private String brand;
     private String status;
     private String fuel_Type;
-    private String running_Km;
+    private double running_Km;
     private Rates rates;
     private Vehicle_Type vehicleType;
 

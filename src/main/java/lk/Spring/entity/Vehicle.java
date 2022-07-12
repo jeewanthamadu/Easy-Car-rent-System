@@ -21,7 +21,7 @@ public class Vehicle {
     private String brand;
     private String status;
     private String fuel_Type;
-    private String running_Km;
+    private double running_Km;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "rate_Id",referencedColumnName = "rate_Id",nullable = false)

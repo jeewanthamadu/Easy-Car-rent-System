@@ -32,7 +32,7 @@ public class DriverController {
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateCustomer(@RequestBody DriverDTO driverDTO){
+    public ResponseUtil updateDriver(@RequestBody DriverDTO driverDTO){
         driverService.updateDriver(driverDTO);
         return new ResponseUtil(200,"Update Success",null);
     }

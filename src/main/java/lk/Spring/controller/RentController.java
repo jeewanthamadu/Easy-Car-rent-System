@@ -1,6 +1,7 @@
 package lk.Spring.controller;
 
 
+import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.RentDTO;
 import lk.Spring.service.RentService;
 import lk.Spring.util.ResponseUtil;
@@ -23,6 +24,28 @@ public class RentController {
     public ResponseUtil saveCustomer(@RequestBody /*@ModelAttribute*/ RentDTO rentDTO){
         rentService.saveRent(rentDTO);
         return new ResponseUtil(200,"Saved",null);
+    }
+
+    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteRent(@RequestParam String id){
+        rentService.deleteRent(id);
+        return new ResponseUtil(200,"Deleted Success",null);
+    }
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateRent(@RequestBody RentDTO rentDTO){
+        rentService.updateRent(rentDTO);
+        return new ResponseUtil(200,"Update Success",null);
+    }
+
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchRent(@PathVariable String id){
+        return new ResponseUtil(200,"Done",rentService.searchRent(id));
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllRent (){
+        return new ResponseUtil(200,"Done",rentService.getAllRent());
     }
 
 

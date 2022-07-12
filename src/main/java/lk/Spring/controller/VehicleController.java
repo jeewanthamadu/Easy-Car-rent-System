@@ -20,7 +20,7 @@ public class VehicleController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveVehicle(@ModelAttribute VehicleDTO vehicleDTO){
+    public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO){
         vehicleService.saveVehicle(vehicleDTO);
         return new ResponseUtil(200,"Saved",null);
     }

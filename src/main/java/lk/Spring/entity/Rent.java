@@ -28,4 +28,12 @@ public class Rent {
 
     @OneToMany(mappedBy = "rent",cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private List<Rent_Detail> rent_details;
+
+
+
+
+
+
+
+
 }
