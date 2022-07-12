@@ -16,12 +16,12 @@ import javax.persistence.Id;
 @Entity
 public class Driver {
     @Id
-    String driverId;
-    String name;
-    String address;
-    String mobileNo;
-    String email;
-    String password;
-    String status;
+    private String driverId;
+    private String name;
+    private String address;
+    private String mobileNo;
+    private String email;
+    private String password;
+    private String status;
 
 }
