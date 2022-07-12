@@ -1,7 +1,6 @@
 package lk.Spring.service.impl;
 
 import lk.Spring.dto.RentDTO;
-import lk.Spring.entity.Customer;
 import lk.Spring.entity.Rent;
 import lk.Spring.repo.RentRepo;
 import lk.Spring.service.RentService;
@@ -23,13 +22,11 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public void saveRent(RentDTO rentDTO) {
-
         if (!repo.existsById(rentDTO.getRent_Id())){
             repo.save(mapper.map(rentDTO, Rent.class));
         }else {
             throw new RuntimeException("Rent Already Added..");
         }
-
     }
 
     @Override
@@ -51,4 +48,6 @@ public class RentServiceImpl implements RentService {
     public List<RentDTO> getAllRent() {
         return null;
     }
+
+
 }
