@@ -30,5 +30,16 @@ public class DriverController {
         return new ResponseUtil(200,"Deleted Success",null);
     }
 
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchDriver(@PathVariable String id){
+        return new ResponseUtil(200,"Done",driverService.searchDriver(id));
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllDriver (){
+        return new ResponseUtil(200,"Done",driverService.getAllDriver());
+    }
+
+
 
 }

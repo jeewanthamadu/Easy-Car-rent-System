@@ -1,6 +1,7 @@
 package lk.Spring.service.impl;
 
 import lk.Spring.dto.DriverDTO;
+import lk.Spring.entity.Customer;
 import lk.Spring.entity.Driver;
 import lk.Spring.repo.DriverRepo;
 import lk.Spring.service.DriverService;
@@ -40,7 +41,11 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void updateDriver(DriverDTO driverDTO) {
-
+        if (repo.existsById(driverDTO.getDriverId())) {
+            repo.save(mapper.map(driverDTO, Driver.class));
+        }else {
+            throw new RuntimeException("Update Failed");
+        }
     }
 
     @Override
