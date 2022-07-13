@@ -1,8 +1,7 @@
 package lk.Spring.service.impl;
 
-import lk.Spring.dto.CustomerDTO;
+
 import lk.Spring.dto.RentDTO;
-import lk.Spring.entity.Customer;
 import lk.Spring.entity.Rent;
 import lk.Spring.repo.RentRepo;
 import lk.Spring.service.RentService;

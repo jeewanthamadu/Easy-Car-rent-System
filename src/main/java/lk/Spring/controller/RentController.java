@@ -1,7 +1,6 @@
 package lk.Spring.controller;
 
 
-import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.RentDTO;
 import lk.Spring.service.RentService;
 import lk.Spring.util.ResponseUtil;
@@ -32,11 +31,13 @@ public class RentController {
         return new ResponseUtil(200,"Deleted Success",null);
     }
 
+
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateRent(@RequestBody RentDTO rentDTO){
         rentService.updateRent(rentDTO);
         return new ResponseUtil(200,"Update Success",null);
     }
+
 
     @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchRent(@PathVariable String id){

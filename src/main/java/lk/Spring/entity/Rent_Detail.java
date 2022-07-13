@@ -33,4 +33,6 @@ public class Rent_Detail {
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "registration_Number",referencedColumnName = "registration_Number",nullable = false,insertable = false,updatable = false)
     private Vehicle vehicle;
+
+
 }
