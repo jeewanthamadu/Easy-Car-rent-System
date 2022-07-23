@@ -25,6 +25,4 @@ public class RentDTO {
     private CustomerDTO customer;
     private List<Rent_Detail> rent_details;
 
-
-
 }

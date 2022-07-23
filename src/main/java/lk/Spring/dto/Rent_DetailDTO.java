@@ -28,5 +28,4 @@ public class Rent_DetailDTO {
 
 
 
-
 }
