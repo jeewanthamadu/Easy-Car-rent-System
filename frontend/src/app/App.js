@@ -7,6 +7,7 @@ import VehicleManage from "../pages/VehicleManage";
 import AddNewVehicle from "../components/AddVehicle";
 import LoginAdmin from "../pages/session/login/userLogin";
 import LoginDriver from "../pages/session/login/driverLogin";
+import AddNewCustomer from "../pages/Create New User";
 
 
 
