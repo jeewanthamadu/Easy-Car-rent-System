@@ -4,6 +4,8 @@ import {styleSheet} from "./style";
 import {withStyles} from "@mui/styles";
 import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 import CommonButton from "../common/Button";
+import VehicleTypeService from "../../services/VehicleTypeService";
+import CustomSnackBar from "../common/SnackBar";
 
 
 class AddVehicleType extends Component {
@@ -15,13 +17,45 @@ class AddVehicleType extends Component {
                 type:"",
                 loss_Damage_Waiver:"",
             },
+            alert:false,
+            message:'',
+            severity:''
         };
     }
 
     handleSubmit = async () => {
-        console.log("Hi handle");
-        console.log(this.state.formData);
+        let formData=this.state.formData
+        let res= await VehicleTypeService.postVehicleType(formData)
+        console.log(res)
+
+
+        if (res.status === 201) {
+            this.setState({
+                alert: true,
+                message: 'Vehicle Type Saved!',
+                severity: 'success'
+            });
+            this.clearFields();
+        }else {
+            this.setState({
+                alert: true,
+                message: 'Vehicle Type Saved Unsuccessful!',
+                severity: 'error'
+            });
+        }
+
+       /* console.log("Hi handle");
+        console.log(this.state.formData);*/
     };
+
+    clearFields = () =>{
+        this.setState({
+            vehicle_Type_Id: "",
+            type: "",
+            loss_Damage_Waiver: "",
+
+        })
+    }
 
     handleChange = (event) => {
         let id = event.target.name;
@@ -48,8 +82,14 @@ class AddVehicleType extends Component {
     };
 
     render() {
+
         const {classes} = this.props;
-        return (<Grid container direction={'row'} xs={12} className={classes.container}>
+
+
+        return (
+            <>
+            <Grid container direction={'row'} xs={12} className={classes.container}>
+
             <ValidatorForm
                 onSubmit={this.handleSubmit}
                 onError={(errors) => console.log(errors)}
@@ -62,8 +102,8 @@ class AddVehicleType extends Component {
                         <TextValidator
                             label="Vehicle Type ID"
                             onChange={this.handleChange}
-                            name="vehicleTypeID"
-                            value={this.state.formData.password}
+                            name="vehicle_Type_Id"
+                            value={this.state.formData.vehicle_Type_Id}
                             validators={["required"]}
                             errorMessages={["This field is required"]}
                             className="w-full"
@@ -73,7 +113,7 @@ class AddVehicleType extends Component {
                             label="Type"
                             onChange={this.handleChange}
                             name="type"
-                            value={this.state.formData.password}
+                            value={this.state.formData.type}
                             validators={["required"]}
                             errorMessages={["This field is required"]}
                             className="w-full"
@@ -82,8 +122,8 @@ class AddVehicleType extends Component {
                         <TextValidator
                             label="loss_Damage_Waiver"
                             onChange={this.handleChange}
-                            name="lossDamageWaiver"
-                            value={this.state.formData.password}
+                            name="loss_Damage_Waiver"
+                            value={this.state.formData.loss_Damage_Waiver}
                             validators={["required"]}
                             errorMessages={["This field is required"]}
                             className="w-full"
@@ -102,8 +142,25 @@ class AddVehicleType extends Component {
                 </Grid>
             </ValidatorForm>
 
-        </Grid>);
+        </Grid>
+
+                <CustomSnackBar
+                    open={this.state.alert}
+                    onClose={() => {
+                        this.setState({alert: false})
+                    }}
+                    message={this.state.message}
+                    autoHideDuration={3000}
+                    severity={this.state.severity}
+                    variant={'filled'}
+                />
+
+            </>
+    );
+
     }
+
+
 }
 
 export default withStyles(styleSheet)(AddVehicleType);

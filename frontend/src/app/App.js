@@ -27,7 +27,7 @@ function App() {
                   <Route path="test" element={<AddNewVehicle />} />
                   {/*<Route path="vehiclerates" element={<VehicleRates/>}/>*/}
                   <Route path="vehicleType" element={<VehicleType/>}/>
-                {/*  <Route path="drivermanage" element={<DriverManage/>}/>
+                {/*<Route path="drivermanage" element={<DriverManage/>}/>
                   <Route path="employeemanage" element={<EmployeeManage/>}/>
                   <Route path="customermanage" element={<CustomerManage/>}/>*/}
               </Route>
