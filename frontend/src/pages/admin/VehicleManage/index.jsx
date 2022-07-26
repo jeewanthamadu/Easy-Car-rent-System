@@ -8,16 +8,16 @@ import {
 } from "@mui/material";
 import React, { Component } from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../../components/common/Navbar/Admin";
-import Sidebar from "../../components/common/sideBar";
-import CommonButton from "../../components/common/Button";
-import CommonDataTable from "../../components/common/table";
+import Navbar from "../../../components/common/Navbar/Admin";
+import Sidebar from "../../../components/common/sideBar";
+import CommonButton from "../../../components/common/Button";
+import CommonDataTable from "../../../components/common/table";
 import AddIcon from "@mui/icons-material/Add";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
-import LoginUser from "../session/login/userLogin";
-import AddNewVehicle from "../../components/AddVehicle";
+import LoginUser from "../../session/login/adminLogin";
+import AddNewVehicle from "../../../components/AddVehicle";
 class VehicleManage extends Component {
     constructor(props) {
         super(props);

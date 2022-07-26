@@ -1,13 +1,14 @@
 import React from "react";
 import Home from "../pages/home";
-import Dashboard from "../pages/dashboard";
+import Dashboard from "../pages/admin/dashboard";
 import NotFound from '../pages/session/notFound'
 import { Route, Routes } from "react-router-dom";
-import VehicleManage from "../pages/VehicleManage";
+import VehicleManage from "../pages/admin/VehicleManage";
 import AddNewVehicle from "../components/AddVehicle";
-import LoginAdmin from "../pages/session/login/userLogin";
+import LoginAdmin from "../pages/session/login/adminLogin";
 import LoginDriver from "../pages/session/login/driverLogin";
-import AddNewCustomer from "../pages/Create New User";
+import VehicleType from "../pages/admin/vehicleType";
+
 
 
 
@@ -24,6 +25,11 @@ function App() {
                   <Route index element={<Dashboard />} />
                   <Route path="vehicleManage" element={<VehicleManage />} />
                   <Route path="test" element={<AddNewVehicle />} />
+                  {/*<Route path="vehiclerates" element={<VehicleRates/>}/>*/}
+                  <Route path="vehicleType" element={<VehicleType/>}/>
+                {/*  <Route path="drivermanage" element={<DriverManage/>}/>
+                  <Route path="employeemanage" element={<EmployeeManage/>}/>
+                  <Route path="customermanage" element={<CustomerManage/>}/>*/}
               </Route>
           </Route>
 

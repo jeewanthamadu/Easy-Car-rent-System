@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material'
 import React, { Component } from 'react'
-import Navbar from '../../components/common/Navbar/Admin'
-import Sidebar from '../../components/common/sideBar'
-import Widget from '../../components/common/widgets'
+import Navbar from '../../../components/common/Navbar/Admin'
+import Sidebar from '../../../components/common/sideBar'
+import Widget from '../../../components/common/widgets'
 
 class Dashboard extends Component {
   render() {
