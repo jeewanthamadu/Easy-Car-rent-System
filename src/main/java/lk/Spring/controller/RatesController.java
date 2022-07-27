@@ -1,6 +1,5 @@
 package lk.Spring.controller;
 
-import lk.Spring.dto.CustomerDTO;
 import lk.Spring.dto.RatesDTO;
 import lk.Spring.service.RatesService;
 import lk.Spring.util.ResponseUtil;

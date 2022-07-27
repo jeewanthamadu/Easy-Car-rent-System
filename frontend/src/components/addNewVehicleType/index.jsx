@@ -143,7 +143,6 @@ class AddVehicleType extends Component {
             </ValidatorForm>
 
         </Grid>
-
                 <CustomSnackBar
                     open={this.state.alert}
                     onClose={() => {

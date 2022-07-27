@@ -76,6 +76,8 @@ class Sidebar extends Component {
                   </Typography>
                 </li>
               </Link>
+
+              <Link to={"../VehicleRates"}>
               <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
                 <DirectionsCarIcon className="text-blue-700 text-lg" />
                 <Typography
@@ -83,9 +85,11 @@ class Sidebar extends Component {
                     component={"span"}
                     className="text-sm font-semibold text-gray-700"
                 >
-                  Vehicle Reats
+                  Vehicle Rates
                 </Typography>
               </li>
+              </Link>
+
               <Link to={"../vehicleType"}>
               <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
                 <DirectionsCarIcon className="text-blue-700 text-lg" />

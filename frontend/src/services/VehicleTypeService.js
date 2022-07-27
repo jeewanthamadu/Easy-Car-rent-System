@@ -4,7 +4,7 @@ import qs from "qs";
 class VehicleTypeService {
     postVehicleType = async (data)=>{
         const  promise = new Promise((resolve,reject)=>{
-            axios.post('Customer',qs.stringify(data))
+            axios.post('VehicleType',qs.stringify(data))
                 .then((res)=>{
                     return resolve(res)
                 }).catch((error)=>{
@@ -15,7 +15,7 @@ class VehicleTypeService {
     }
      fetchVehicleType =  async (data)=>{
          const  promise = new Promise((resolve,reject)=>{
-             axios.get('Customer')
+             axios.get('VehicleType')
                  .then((res)=>{
                      return resolve(res)
                  }).catch((error)=>{
@@ -27,7 +27,7 @@ class VehicleTypeService {
 
      updateVehicleType = async (data)=>{
          const  promise = new Promise((resolve,reject)=>{
-             axios.put('Customer',data)
+             axios.put('VehicleType',data)
                  .then((res)=>{
                      return resolve(res)
                  }).catch((error)=>{

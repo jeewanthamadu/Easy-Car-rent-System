@@ -8,6 +8,7 @@ import AddNewVehicle from "../components/AddVehicle";
 import LoginAdmin from "../pages/session/login/adminLogin";
 import LoginDriver from "../pages/session/login/driverLogin";
 import VehicleType from "../pages/admin/vehicleType";
+import VehicleRates from "../pages/admin/vehicleRate";
 
 
 
@@ -25,7 +26,7 @@ function App() {
                   <Route index element={<Dashboard />} />
                   <Route path="vehicleManage" element={<VehicleManage />} />
                   <Route path="test" element={<AddNewVehicle />} />
-                  {/*<Route path="vehiclerates" element={<VehicleRates/>}/>*/}
+                  <Route path="vehicleRates" element={<VehicleRates/>}/>
                   <Route path="vehicleType" element={<VehicleType/>}/>
                 {/*<Route path="drivermanage" element={<DriverManage/>}/>
                   <Route path="employeemanage" element={<EmployeeManage/>}/>
