@@ -33,39 +33,39 @@ class VehicleRates extends Component {
             //  for data table
             columns: [
                 {
-                    field: "rateId",
+                    field: "rate_Id",
                     headerName: "Rate ID",
                     width: 228,
                 },
 
                 {
-                    field: "dailyRate",
+                    field: "daily_Rate",
                     headerName: "Daily Rate",
                     width: 228,
                 },
 
                 {
-                    field: "freeKmForaDay",
+                    field: "free_Km_Day",
                     headerName: "Free Km For a Day",
                     width: 228,
                     sortable: false,
                 },
 
                 {
-                    field: "freeKmForaMonth",
+                    field: "free_Km_Month",
                     headerName: "Free Km For a Month",
                     width: 228,
                 },
 
                 {
-                    field: "monthlyRate",
+                    field: "monthly_rate",
                     headerName: "Monthly Rate",
                     width: 228,
                     sortable: false,
                 },
 
                 {
-                    field: "pricePerExtraKm",
+                    field: "extra_Km_Price",
                     headerName: "Price Per Extra Km",
                     width: 228,
                     sortable: false,
@@ -108,7 +108,7 @@ class VehicleRates extends Component {
 
     deleteRates = async (id) => {
         let params = {
-            rateID: id
+            rate_Id: id
         }
         let res = await vehicleRateService.deleteRates(params);
         console.log(res)
@@ -131,12 +131,12 @@ class VehicleRates extends Component {
     updateRates = async (data) => {
         const row = data;
         let vehicleRates = {
-            "rateId": row.rateId,
-            "monthlyRate": row.monthlyRate,
-            "dailyRate": row.dailyRate,
-            "freeKmForaMonth": row.freeKmForaMonth,
-            "freeKmForaDay": row.freeKmForaDay,
-            "pricePerExtraKm": row.pricePerExtraKm
+            "rate_Id": row.rate_Id,
+            "monthly_rate": row.monthly_rate,
+            "daily_Rate": row.daily_Rate,
+            "free_Km_Month": row.free_Km_Month,
+            "free_Km_Day": row.free_Km_Day,
+            "extra_Km_Price": row.extra_Km_Price
         }
         await this.setState({vehicleRates: vehicleRates});
         await this.setState({
@@ -150,7 +150,7 @@ class VehicleRates extends Component {
         let nData = [];
         if (resp.status === 200) {
             resp.data.data.map((value, index) => {
-                value.id = value.rateId;
+                value.id = value.rate_Id;
                 nData.push(value)
             })
 

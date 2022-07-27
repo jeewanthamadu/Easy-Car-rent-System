@@ -3,6 +3,7 @@ import qs from 'qs';
 
 class VehicleRateService {
     postRates=async (data) => {
+        console.log("data = ",data)
         const promise = new Promise((resolve, reject) => {
             axios.post('Rate', qs.stringify(data))
                 .then((res) => {

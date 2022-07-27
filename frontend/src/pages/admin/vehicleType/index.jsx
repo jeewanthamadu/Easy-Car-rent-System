@@ -1,4 +1,4 @@
-import {Dialog, DialogContent, DialogTitle, Grid, IconButton, Typography,} from "@mui/material";
+import {Dialog, DialogContent, DialogTitle, Grid, IconButton, Tooltip, Typography,} from "@mui/material";
 import React, {Component} from "react";
 import Navbar from "../../../components/common/Navbar/Admin";
 import Sidebar from "../../../components/common/sideBar";
@@ -7,8 +7,13 @@ import CommonDataTable from "../../../components/common/table/";
 import AddIcon from "@mui/icons-material/Add";
 import {withStyles} from "@mui/styles";
 import {styleSheet} from "./style";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import CloseIcon from "@mui/icons-material/Close";
 import AddVehicleType from "../../../components/addNewVehicleType";
+import VehicleTypeService from "../../../services/VehicleTypeService";
+import * as PropTypes from "prop-types";
+
 
 class VehicleType extends Component {
     constructor(props) {
@@ -48,20 +53,87 @@ class VehicleType extends Component {
                     field: "Action",
                     headerName: "Action",
                     width: 400,
+                    renderCell: (params) => {
+                        return (
+                            <>
+                                <Tooltip title="Edit">
+                                    <IconButton onClick={async () => {
+                                        await this.updateVehicleType(params.row);
+                                    }}>
+                                        <EditIcon className={'text-blue-500'}/>
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Delete">
+                                    <IconButton onClick={async () => {
+                                        await this.deleteVehicleType(params.row.vehicleTypeId);
+                                    }}>
+                                        <DeleteIcon className={'text-red-500'}/>
+                                    </IconButton>
+                                </Tooltip>
+                            </>
+                        )
+                    }
                 },
             ],
         };
     }
 
-    async loadData() {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.popup == true){
+            this.loadVtypeData()
+        }
+    }
+
+    deleteVehicleType = async (id) => {
+        let params = {
+            typeId: id
+        }
+        let res = await VehicleTypeService.deleteVehicleType(params)
+        if (res.status === 200){
+            this.setState({
+                alert: true,
+                message: res.data.message,
+                severity: 'success'
+            })
+            this.loadVtypeData()
+        }else {
+            this.setState({
+                alert: true,
+                message: res.data.message,
+                severity: 'error'
+            })
+        }
+    }
+
+    updateVehicleType = async (data) => {
+        const row = data;
+        let updateVehicleType = {
+            "vehicleTypeId": row.vehicleTypeId,
+            "type": row.type,
+            "ldw": row.ldw,
+        }
+        await this.setState({updateVehicleType: updateVehicleType})
+        await this.setState({
+            popup: true,
+            isUpdate: true
+        })
+    }
+
+    async loadVtypeData() {
         // let resp = await PostService.fetchPosts();
-        const data = [];
-        this.setState({
-            loaded: true,
-            data: data,
-        });
-        console.log(this.state.data);
-        // console.log(JSON.stringify(resp.data));
+        let resp = await VehicleTypeService.fetchVehicleType();
+        let nData = [];
+        if (resp.status === 200) {
+            resp.data.data.map((value, index) => {
+                value.id = value.vehicleTypeId;
+                nData.push(value)
+            })
+
+            this.setState({
+                loaded: true,
+                data: nData,
+            });
+        }
     }
 
     componentDidMount() {
