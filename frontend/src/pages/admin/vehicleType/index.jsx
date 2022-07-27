@@ -23,6 +23,9 @@ class VehicleType extends Component {
             message: "",
             severity: "",
 
+            updateVehicleType:{},
+            isUpdate:false,
+
             //  for table
             data: [],
             loaded: false,
@@ -64,7 +67,7 @@ class VehicleType extends Component {
                                 </Tooltip>
                                 <Tooltip title="Delete">
                                     <IconButton onClick={async () => {
-                                        await this.deleteVehicleType(params.row.vehicleTypeId);
+                                        await this.deleteVehicleType(params.row.vehicle_Type_Id);
                                     }}>
                                         <DeleteIcon className={'text-red-500'}/>
                                     </IconButton>
@@ -101,7 +104,7 @@ class VehicleType extends Component {
 
     deleteVehicleType = async (id) => {
         let params = {
-            typeId: id
+            id: id
         }
         let res = await VehicleTypeService.deleteVehicleType(params)
         if (res.status === 200){

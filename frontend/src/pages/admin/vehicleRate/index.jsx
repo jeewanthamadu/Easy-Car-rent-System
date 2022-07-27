@@ -87,7 +87,7 @@ class VehicleRates extends Component {
                                 </Tooltip>
                                 <Tooltip title="Delete">
                                     <IconButton onClick={async () => {
-                                        await this.deleteRates(params.row.rateId);
+                                        await this.deleteRates(params.row.rate_Id);
                                     }}>
                                         <DeleteIcon className={'text-red-500'}/>
                                     </IconButton>
@@ -108,7 +108,7 @@ class VehicleRates extends Component {
 
     deleteRates = async (id) => {
         let params = {
-            rate_Id: id
+            id: id
         }
         let res = await vehicleRateService.deleteRates(params);
         console.log(res)

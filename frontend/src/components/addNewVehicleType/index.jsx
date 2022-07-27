@@ -13,9 +13,9 @@ class AddVehicleType extends Component {
         super(props);
         this.state = {
             formData: {
-                vehicle_Type_Id:"",
-                type:"",
-                loss_Damage_Waiver:"",
+                vehicle_Type_Id: props.isUpdate?props.typeObj.vehicle_Type_Id:'',
+                type: props.isUpdate?props.typeObj.type:'',
+                loss_Damage_Waiver:props.isUpdate?props.typeObj.loss_Damage_Waiver:'',
             },
             alert:false,
             message:'',
@@ -24,28 +24,43 @@ class AddVehicleType extends Component {
     }
 
     handleSubmit = async () => {
-        let formData=this.state.formData
-        let res= await VehicleTypeService.postVehicleType(formData)
-        console.log(res)
+        let formData = this.state.formData
+        if (this.props.isUpdate){
+            let res = await VehicleTypeService.updateVehicleType(formData)
+            if (res.status === 200) {
+                this.setState({
+                    alert:true,
+                    message:'Vehicle Type Updated!',
+                    severity:'success'
+                })
 
+            }else {
+                this.setState({
+                    alert:false,
+                    message:'Vehicle Type Update Unsuccessful!',
+                    severity:'error'
+                })
+            }
 
-        if (res.status === 201) {
-            this.setState({
-                alert: true,
-                message: 'Vehicle Type Saved!',
-                severity: 'success'
-            });
-            this.clearFields();
         }else {
-            this.setState({
-                alert: true,
-                message: 'Vehicle Type Saved Unsuccessful!',
-                severity: 'error'
-            });
+            let res = await VehicleTypeService.postVehicleType(formData)
+            if (res.status === 201) {
+                this.setState({
+                    alert:true,
+                    message:'Vehicle Type Saved!',
+                    severity:'success'
+                })
+
+            }else {
+                this.setState({
+                    alert:false,
+                    message:'Vehicle Type Saved Unsuccessful!',
+                    severity:'error'
+                })
+            }
         }
 
-       /* console.log("Hi handle");
-        console.log(this.state.formData);*/
+
     };
 
     clearFields = () =>{
@@ -124,15 +139,15 @@ class AddVehicleType extends Component {
                             onChange={this.handleChange}
                             name="loss_Damage_Waiver"
                             value={this.state.formData.loss_Damage_Waiver}
-                            validators={["required"]}
-                            errorMessages={["This field is required"]}
+                            validators={["required","isFloat"]}
+                            errorMessages={["This field is required",'input is not valid']}
                             className="w-full"
                             style={{minWidth: '100%'}}
                         />
                         <CommonButton
                             size="large"
                             variant="contained"
-                            label="Add"
+                            label={this.props.isUpdate ? 'Update' : 'Add'}
                             type="submit"
                             className="text-white bg-blue-500 font-bold tracking-wide"
                             style={{backgroundColor: 'rgba(25, 118, 210, 0.95)', width: '100%'}}

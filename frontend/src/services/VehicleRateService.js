@@ -28,6 +28,7 @@ class VehicleRateService {
     }
 
     deleteRates = async (params) => {
+        console.log("paramas ballo meh : ",params)
         const promise = new Promise((resolve, reject) => {
             axios.delete('Rate', {params:params})
                 .then((res) => {
