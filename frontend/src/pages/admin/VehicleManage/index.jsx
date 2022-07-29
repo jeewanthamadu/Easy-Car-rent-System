@@ -1,23 +1,19 @@
-import {
-    Dialog,
-    DialogContent,
-    DialogTitle,
-    Grid,
-    IconButton,
-    Typography,
-} from "@mui/material";
-import React, { Component } from "react";
-import { Outlet } from "react-router-dom";
+import {Dialog, DialogContent, DialogTitle, Grid, IconButton, Tooltip, Typography,} from "@mui/material";
+import React, {Component} from "react";
 import Navbar from "../../../components/common/Navbar/Admin";
 import Sidebar from "../../../components/common/sideBar";
 import CommonButton from "../../../components/common/Button";
 import CommonDataTable from "../../../components/common/table";
 import AddIcon from "@mui/icons-material/Add";
-import { withStyles } from "@mui/styles";
-import { styleSheet } from "./style";
+import {withStyles} from "@mui/styles";
+import {styleSheet} from "./style";
 import CloseIcon from "@mui/icons-material/Close";
-import LoginUser from "../../session/login/adminLogin";
 import AddNewVehicle from "../../../components/AddVehicle";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import VehicleService from "../../../services/VehicleService";
+import CustomSnackBar from "../../../components/common/SnackBar";
+
 class VehicleManage extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +23,8 @@ class VehicleManage extends Component {
             message: "",
             severity: "",
 
+            isUpdate: false,
+
             //  for table
             data: [],
             loaded: false,
@@ -34,151 +32,171 @@ class VehicleManage extends Component {
             //  for data table
             columns: [
                 {
-                    field: "registrationNumber",
+                    field: "registration_Number",
                     headerName: "Reg Num",
-                    width: 90,
+                    width: 150,
                 },
 
                 {
                     field: "brand",
                     headerName: "Brand",
-                    width: 80,
+                    width: 150,
                 },
 
                 {
-                    field: "color",
+                    field: "colour",
                     headerName: "color",
-                    width: 100,
+                    width: 125,
                     sortable: false,
                 },
 
                 {
-                    field: "fuelType",
-                    headerName: "fuleType",
-                    width: 100,
+                    field: "fuel_Type",
+                    headerName: "Fuel Type",
+                    width: 150,
                 },
 
                 {
-                    field: "noOfPassengers",
+                    field: "no_Of_Passengers",
                     headerName: "Num. Passengers",
-                    width: 100,
+                    width: 150,
                 },
 
                 {
-                    field: "runningKm",
+                    field: "running_Km",
                     headerName: "Running km",
                     width: 150,
                 },
 
                 {
-                    field: "transmissionType",
-                    headerName: "Transmition Type",
-                    width: 100,
+                    field: "transmission_Type",
+                    headerName: "Transmission Type",
+                    width: 150,
                 },
 
                 {
-                    field: "userId",
+                    field: "rate_Id",
                     headerName: "Rates",
-                    width: 100,
+                    width: 150,
                 },
 
                 {
-                    field: "userId",
-                    headerName: "type",
-                    width: 100,
+                    field: "vehicle_Type_Id",
+                    headerName: "Type",
+                    width: 150,
                 },
 
                 {
                     field: "status",
                     headerName: "Status",
-                    width: 100,
+                    width: 150,
                 },
 
                 {
                     field: "action",
                     headerName: "Action",
                     width: 150,
+                    renderCell: (params) => {
+                        return (
+                            <>
+                                <Tooltip title="Edit">
+                                    <IconButton onClick={async () => {
+                                        await this.updateVehicle(params.row);
+                                    }}>
+                                        <EditIcon className={'text-blue-500'}/>
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Delete">
+                                    <IconButton onClick={async () => {
+                                        await this.deleteVehicle(params.row.registration_Number);
+                                    }}>
+                                        <DeleteIcon className={'text-red-500'}/>
+                                    </IconButton>
+                                </Tooltip>
+                            </>
+                        )
+                    }
                 },
             ],
         };
     }
 
+    updateVehicle = async (data) => {
+
+        const row = data;
+        console.log('data : ',data)
+        let updateVehicle={
+            "registration_Number": row.registration_Number,
+            "brand": row.brand,
+            "colour": row.color,
+            "status": row.status,
+            "no_Of_Passengers": row.no_Of_Passengers,
+            "running_Km":row.running_Km,
+            "fuel_Type":row.fuel_Type,
+            "transmission_Type": row.transmission_Type,
+            "type": {
+                "vehicleTypeId":row.type.vehicle_Type_Id,
+                "ldw": row.type.loss_Damage_Waiver,
+                "type": row.type.type,
+            },
+            "rates": {
+                "rateId":row.rates.rate_Id,
+                "monthlyRate":row.rates.monthly_rate,
+                "dailyRate":row.rates.daily_Rate,
+                "freeKmForaMonth":row.rates.free_Km_Month,
+                "freeKmForaDay": row.rates.free_Km_Day,
+                "pricePerExtraKm": row.rates.extra_Km_Price,
+            }
+        }
+        await this.setState({updateVehicle: updateVehicle});
+        await this.setState({
+            popup: true,
+            isUpdate: true
+        })
+
+    }
+
+    deleteVehicle = async (id) => {
+        let params = {
+            registration_Number: id
+        }
+        let res = await VehicleService.deleteVehicle(params);
+        console.log(res)
+        if (res.status === 200) {
+            this.setState({
+                alert: true,
+                message: res.data.message,
+                severity: 'success'
+            });
+            this.loadData();
+        } else {
+            this.setState({
+                alert: true,
+                message: res.message,
+                severity: 'error'
+            });
+        }
+    }
+
+
     async loadData() {
-        // let resp = await PostService.fetchPosts();
-        const data = [
-            {
-                userId: 156984,
-                id: "Reg00-001",
-                title:
-                    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-            },
-            {
-                userId: 1,
-                id: 2,
-                title: "qui est esse",
-            },
-            {
-                userId: 1,
-                id: 3,
-                title: "ea molestias quasi exercitationem repellat qui ipsa sit aut",
-            },
-            {
-                userId: 1,
-                id: 4,
-                title: "eum et est occaecati",
-            },
-            {
-                userId: 1,
-                id: 5,
-                title: "nesciunt quas odio",
-            },
-            {
-                userId: 1,
-                id: 6,
-                title: "dolorem eum magni eos aperiam quia",
-            },
-            {
-                userId: 1,
-                id: 7,
-                title: "magnam facilis autem",
-            },
-            {
-                userId: 1,
-                id: 8,
-                title: "dolorem dolore est ipsam",
-            },
-            {
-                userId: 1,
-                id: 9,
-                title: "nesciunt iure omnis dolorem tempora et accusantium",
-            },
-            {
-                userId: 1,
-                id: 10,
-                title: "optio molestias id quia eum",
-            },
-            {
-                userId: 2,
-                id: 11,
-                title: "et ea vero quia laudantium autem",
-            },
-            {
-                userId: 2,
-                id: 12,
-                title: "in quibusdam tempore odit est dolorem",
-            },
-            {
-                userId: 2,
-                id: 13,
-                title: "dolorum ut in voluptas mollitia et saepe quo animi",
-            },
-        ];
-        this.setState({
-            loaded: true,
-            data: data,
-        });
-        console.log(this.state.data);
-        // console.log(JSON.stringify(resp.data));
+
+        let resp = await VehicleService.fetchVehicles();
+        let nData = [];
+        if (resp.status === 200) {
+            resp.data.data.map((value, index) => {
+                value.id = value.registration_Number;
+                value.vehicle_Type_Id = value.vehicleType.vehicle_Type_Id
+                value.rate_Id = value.rates.rate_Id
+                nData.push(value)
+            })
+
+            this.setState({
+                loaded: true,
+                data: nData,
+            });
+        }
+        console.log(this.state.data)
     }
 
     componentDidMount() {
@@ -186,85 +204,105 @@ class VehicleManage extends Component {
         console.log("Mounted");
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.popup == true) {
+            this.loadData()
+        }
+    }
+
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
         return (
-            <Grid container direction={"row"} columns="12">
-                <Grid item xs={"auto"}>
-                    <Sidebar />
-                </Grid>
-                <Grid item xs className="">
-                    <Navbar />
-                    <Grid container item xs={"auto"} className="flex p-5 gap-5">
-                        <Grid
-                            container
-                            item
-                            xs={12}
-                            gap="5px"
-                            className="rounded-lg p-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
-                        >
-                            <CommonButton
-                                variant="outlined"
-                                label="Add Vehicle"
-                                onClick={() => this.setState({ popup: true })}
-                                startIcon={<AddIcon />}
-                            />
-                            <CommonButton
-                                variant="outlined"
-                                label="Add Vehicle Rates"
-                                startIcon={<AddIcon />}
-                            />
-                            <CommonButton
-                                variant="outlined"
-                                label="Add Vehicle Types"
-                                startIcon={<AddIcon />}
-                            />
-                        </Grid>
-                        <Grid
-                            container
-                            item
-                            xs={12}
-                            gap="5px"
-                            className="rounded-lg p-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
-                            style={{ height: "700px" }}
-                        >
-                            <CommonDataTable
-                                columns={this.state.columns}
-                                rows={this.state.data}
-                                rowsPerPageOptions={5}
-                                pageSize={10}
-                                // checkboxSelection={true}
-                            />
+            <>
+
+                <Grid container direction={"row"} columns="12">
+                    <Grid item xs={"auto"}>
+                        <Sidebar/>
+                    </Grid>
+                    <Grid item xs className="">
+                        <Navbar/>
+                        <Grid container item xs={"auto"} className="flex p-5 gap-5">
+                            <Grid
+                                container
+                                item
+                                xs={12}
+                                gap="5px"
+                                className="rounded-lg p-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+                            >
+                                <CommonButton
+                                    variant="outlined"
+                                    label="Add Vehicle"
+                                    onClick={() => this.setState({popup: true})}
+                                    startIcon={<AddIcon/>}
+                                />{/*
+              <CommonButton
+                variant="outlined"
+                label="Add Vehicle Rates"
+                startIcon={<AddIcon />}
+              />
+              <CommonButton
+                variant="outlined"
+                label="Add Vehicle Types"
+                startIcon={<AddIcon />}
+              />*/}
+                            </Grid>
+                            <Grid
+                                container
+                                item
+                                xs={12}
+                                gap="5px"
+                                className="rounded-lg p-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+                                style={{height: "700px"}}
+                            >
+                                <CommonDataTable
+                                    columns={this.state.columns}
+                                    rows={this.state.data}
+                                    rowsPerPageOptions={5}
+                                    pageSize={10}
+                                    // checkboxSelection={true}
+                                />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
                 <Dialog
                     open={this.state.popup}
                     maxWidth="md"
-                    classes={{ paper: classes.dialogWraper }}
+                    classes={{paper: classes.dialogWraper}}
                 >
-                    <DialogTitle style={{ paddingRight: "0px" }}>
-                        <div style={{ display: "flex" }}>
+                    <DialogTitle style={{paddingRight: "0px"}}>
+                        <div style={{display: "flex"}}>
                             <Typography
                                 variant="h4"
                                 component="div"
                                 className="font-bold flex-grow"
-                                style={{ flexGrow: 1 }}
+                                style={{flexGrow: 1}}
                             >
                                 Add New Vehicle
                             </Typography>
 
-                            <IconButton onClick={() => this.setState({ popup: false })}>
-                                <CloseIcon />
+                            <IconButton onClick={() => this.setState({popup: false})}>
+                                <CloseIcon/>
                             </IconButton>
                         </div>
                     </DialogTitle>
-                    <DialogContent dividers>
-                        <AddNewVehicle/>
+                    <DialogContent dividers>{console.log("update",this.state.updateVehicle)}
+                        <AddNewVehicle isUpdate={this.state.isUpdate} obj={this.state.updateVehicle}/>
                     </DialogContent>
                 </Dialog>
-            </Grid>
+                <CustomSnackBar
+                    open={this.state.alert}
+                    onClose={() => {
+                        this.setState({alert: false})
+                    }}
+                    message={this.state.message}
+                    autoHideDuration={3000}
+                    severity={this.state.severity}
+                    variant={'filled'}
+                />
+            </>
         );
     }
 }
+
 export default withStyles(styleSheet)(VehicleManage);
