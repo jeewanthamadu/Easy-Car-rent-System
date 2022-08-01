@@ -1,11 +1,11 @@
 import {Grid} from "@mui/material";
 import React, {Component} from "react";
-import {styleSheet} from "./styles";
+import {styleSheet} from "./style";
 import {withStyles} from "@mui/styles";
 import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 import CommonButton from "../common/Button";
 import DriverService from "../../services/DriverService";
-import CustomSnackBar from "../common/SnakBar";
+import CustomSnackBar from "../common/SnackBar";
 
 
 class AddDriver extends Component {

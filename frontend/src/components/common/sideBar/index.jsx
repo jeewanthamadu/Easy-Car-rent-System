@@ -105,6 +105,8 @@ class Sidebar extends Component {
               <Typography variant="p" component={"p"} className="text-xs font-bold text-gray-600 mt-4 mb-1">
                 Manage
               </Typography>
+
+              <Link to={"../drivermanage"}>
               <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
                 <PersonOutlineOutlinedIcon className="text-blue-700 text-lg" />
                 <Typography
@@ -115,6 +117,7 @@ class Sidebar extends Component {
                   Driver Manage
                 </Typography>
               </li>
+              </Link>
               <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
                 <SupervisorAccountIcon className="text-blue-700 text-lg" />
                 <Typography
