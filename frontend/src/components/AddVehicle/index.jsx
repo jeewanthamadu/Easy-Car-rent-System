@@ -11,7 +11,7 @@ import VehicleService from "../../services/VehicleService";
 import CustomSnackBar from "../common/SnackBar";
 import VehicleRateService from "../../services/VehicleRateService";
 
-
+ 
 class AddNewVehicle extends Component {
     constructor(props) {
         super(props);
