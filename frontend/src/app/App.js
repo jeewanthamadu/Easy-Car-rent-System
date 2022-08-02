@@ -10,6 +10,7 @@ import LoginDriver from "../pages/session/login/driverLogin";
 import VehicleType from "../pages/admin/vehicleType";
 import VehicleRates from "../pages/admin/vehicleRate";
 import DriverManage from "../pages/admin/driverManage";
+import CustomerManage from "../pages/admin/customerManage";
 
 
 
@@ -30,8 +31,9 @@ function App() {
                   <Route path="vehicleRates" element={<VehicleRates/>}/>
                   <Route path="vehicleType" element={<VehicleType/>}/>
                 <Route path="drivermanage" element={<DriverManage/>}/>
-                  {/* <Route path="employeemanage" element={<EmployeeManage/>}/>
-                  <Route path="customermanage" element={<CustomerManage/>}/>*/}
+                  <Route path="customermanage" element={<CustomerManage/>}/>
+
+                  {/*  <Route path="employeemanage" element={<EmployeeManage/>}/> */}
               </Route>
           </Route>
 
