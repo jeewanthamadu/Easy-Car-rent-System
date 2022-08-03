@@ -39,7 +39,6 @@ class VehicleService {
     }
 
     deleteVehicle = async (params) =>{
-        console.log("de")
         const promise = new Promise((resolve, reject) => {
             axios.delete('Vehicle',{params:params})
                 .then((res) => {

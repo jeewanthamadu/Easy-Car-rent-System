@@ -79,17 +79,6 @@ class VehicleType extends Component {
             ],
         };
     }
-/*
-  async loadData() {
-        // let resp = await PostService.fetchPosts();
-        const data = [];
-        this.setState({
-            loaded: true,
-            data: data,
-        });
-        console.log(this.state.data);
-        // console.log(JSON.stringify(resp.data));
-    }*/
 
     componentDidMount() {
         this.loadVtypeData();

@@ -139,7 +139,6 @@ class EmployeeManage extends Component {
             id: id
         }
         let res = await EmployeeService.deleteEmployee(params);
-        console.log(res)
         if (res.status === 200) {
             this.setState({
                 alert: true,

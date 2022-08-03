@@ -124,7 +124,6 @@ class VehicleManage extends Component {
     updateVehicle = async (data) => {
 
         const row = data;
-        console.log('data : ',data)
         let updateVehicle={
             "registration_Number": row.registration_Number,
             "brand": row.brand,
@@ -158,10 +157,9 @@ class VehicleManage extends Component {
 
     deleteVehicle = async (id) => {
         let params = {
-            registration_Number: id
+            id: id
         }
         let res = await VehicleService.deleteVehicle(params);
-        console.log(res)
         if (res.status === 200) {
             this.setState({
                 alert: true,
