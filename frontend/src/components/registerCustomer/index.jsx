@@ -19,7 +19,7 @@ class RegisterCustomer extends Component {
             formData: {
                 id: '',
                 name: '',
-                nIC_Number: '',
+                nic_Number: '',
                 address: '',
                 mobile_Number: '',
                 driving_License_Number: '',
@@ -81,9 +81,9 @@ class RegisterCustomer extends Component {
                 this.setState(Object.assign(this.state.formData, {name: name}));
                 break;
 
-            case "nIC_Number":
-                const nIC_Number = event.target.value;
-                this.setState(Object.assign(this.state.formData, {nIC_Number: nIC_Number}));
+            case "nic_Number":
+                const nic_Number = event.target.value;
+                this.setState(Object.assign(this.state.formData, {nic_Number: nic_Number}));
                 break;
 
             case "driving_License_Number":
@@ -168,8 +168,8 @@ class RegisterCustomer extends Component {
                                 <TextValidator
                                     label="NIC"
                                     onChange={this.handleChange}
-                                    name="nIC_Number"
-                                    value={this.state.formData.nIC_Number}
+                                    name="nic_Number"
+                                    value={this.state.formData.nic_Number}
                                     validators={["required"]}
                                     errorMessages={["This field is required"]}
                                     className={[classes.textField, "w-full text-red-500"]}

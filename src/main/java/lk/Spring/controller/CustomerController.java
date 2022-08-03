@@ -20,9 +20,7 @@ public class CustomerController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO customerDTO){
-        System.out.println("Hey");
         customerService.saveCustomer(customerDTO);
-        System.out.println("Hey");
         return new ResponseUtil(200,"Saved",null);
     }
 
@@ -64,7 +62,6 @@ public class CustomerController {
         System.out.println("Hey");
         System.out.println(customer);
         System.out.println(myFile.getName());
-
         customerService.saveCustomerWithImg(customer,myFile);
         return new ResponseUtil(200, "New User Create Successfully", null);
     }

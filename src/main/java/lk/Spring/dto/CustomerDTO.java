@@ -18,7 +18,7 @@ public class CustomerDTO {
     private String address;
     private String mobile_Number;
     private String driving_License_Number;
-    private String nIC_Number;
+    private String nic_Number;
     private String email;
     private String password;
     private List<License_or_NIC_IMGDTO> imgs;

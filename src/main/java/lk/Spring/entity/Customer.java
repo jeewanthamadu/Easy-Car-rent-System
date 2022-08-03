@@ -1,12 +1,13 @@
 package lk.Spring.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lk.Spring.dto.License_or_NIC_IMGDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,12 +22,13 @@ public class Customer {
     private String address;
     private String mobile_Number;
     private String driving_License_Number;
-    /*@JsonFormat(pattern = )*/
-    /* private byte id_Img;*/
-    private String  nIC_Number;
+    private String  nic_Number;
     private String email;
     private String password;
 
+    @OneToMany(targetEntity = License_or_NIC_IMG.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "customerID", referencedColumnName = "id")
+    private List<License_or_NIC_IMG> imgs;
 
 
 }

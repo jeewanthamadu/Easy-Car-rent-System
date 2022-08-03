@@ -21,7 +21,8 @@ public class WebAppConfig implements WebMvcConfigurer {
     @Bean
     public ModelMapper modelMapper(){
         return new ModelMapper();
-    } @Bean
+    }
+    @Bean
     public ObjectMapper objectMapper(){
         return new ObjectMapper();
     }
