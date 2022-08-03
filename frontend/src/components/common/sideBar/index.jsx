@@ -106,7 +106,7 @@ class Sidebar extends Component {
                 Manage
               </Typography>
 
-              <Link to={"../drivermanage"}>
+              <Link to={"../driverManage"}>
               <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
                 <PersonOutlineOutlinedIcon className="text-blue-700 text-lg" />
                 <Typography
@@ -118,6 +118,8 @@ class Sidebar extends Component {
                 </Typography>
               </li>
               </Link>
+
+              <Link to={"../employeeManage"}>
               <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
                 <SupervisorAccountIcon className="text-blue-700 text-lg" />
                 <Typography
@@ -128,8 +130,9 @@ class Sidebar extends Component {
                   Employee Manage
                 </Typography>
               </li>
+              </Link>
 
-              <Link to={"../customermanage"}>
+              <Link to={"../customerManage"}>
               <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
                 <PeopleIcon className="text-blue-700 text-lg" />
                 <Typography

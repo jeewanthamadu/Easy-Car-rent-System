@@ -117,7 +117,7 @@ class DriverManage extends Component {
 
     deleteDriver = async (id) => {
         let params = {
-            driverId: id
+            id: id
         }
         let res = await DriverService.deleteDriver(params);
         console.log(res)
