@@ -12,6 +12,7 @@ import VehicleRates from "../pages/admin/vehicleRate";
 import DriverManage from "../pages/admin/driverManage";
 import CustomerManage from "../pages/admin/customerManage";
 import EmployeeManage from "../pages/admin/EmployeeManage";
+import RegisterCustomer from "../components/registerCustomer";
 
 
 
@@ -22,6 +23,7 @@ function App() {
       <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="/register" element={<RegisterCustomer/>}/>
 
           <Route path="admin">
               <Route index element={<LoginAdmin />} />

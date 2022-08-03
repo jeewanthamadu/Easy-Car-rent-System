@@ -58,14 +58,7 @@ class LoginUser extends Component {
                 className="min-h-96  w-96 bg-slate-50 rounded-lg p-10 drop-shadow-lg"
             >
               <Grid container item direction={"column"} gap="20px" className="">
-                {/* <Grid item>
-                <Typography
-                  variant="h4"
-                  className="text-center uppercase font-bold"
-                >
-                  Login
-                </Typography>
-              </Grid> */}
+
                 <ValidatorForm
                     onSubmit={this.handleSubmit}
                     onError={(errors) => console.log(errors)}
@@ -104,7 +97,7 @@ class LoginUser extends Component {
                     />
 
                     <Typography variant="p">
-                      You are not a member? <Link> Register Now</Link>
+                      You are not a member? <Link to={'/register'} > Register Now</Link>
                     </Typography>
                   </Grid>
                 </ValidatorForm>
