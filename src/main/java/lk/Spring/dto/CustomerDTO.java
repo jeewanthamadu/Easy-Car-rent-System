@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -19,5 +21,6 @@ public class CustomerDTO {
     private String nIC_Number;
     private String email;
     private String password;
+    private List<License_or_NIC_IMGDTO> imgs;
 
 }

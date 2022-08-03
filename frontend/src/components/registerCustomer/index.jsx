@@ -44,6 +44,7 @@ class RegisterCustomer extends Component {
         data.append("file",this.state.verification)
 
         let res = await CustomerService.postCustomer(data)
+        console.log(data)
         if (res.status === 201){
             this.setState({
                 alert: true,
@@ -67,8 +68,8 @@ class RegisterCustomer extends Component {
     }
 
     handleChange = (event) => {
-        let id = event.target.name;
-        switch (id) {
+        let id1 = event.target.name;
+        switch (id1) {
             case "id":
                 const id = event.target.value;
                 this.setState(Object.assign(this.state.formData, {id: id}));
@@ -149,7 +150,7 @@ class RegisterCustomer extends Component {
                                 <TextValidator
                                     label="User ID"
                                     onChange={this.handleChange}
-                                    name="regUserId"
+                                    name="id"
                                     value={this.state.formData.id}
                                     validators={["required"]}
                                     errorMessages={["This field is required"]}

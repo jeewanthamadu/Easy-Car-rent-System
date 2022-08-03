@@ -97,12 +97,7 @@ class Footer extends Component {
                 justifyContent="center"
                 className="bg-yellow-000 h-14"
               >
-                <ul className="flex justify-center gap-4 font-semibold">
-                  <li>Home</li>
-                  <li>General Cars</li>
-                  <li>Premium Cars</li>
-                  <li>Luxery Cars</li>
-                </ul>
+
               </Grid>
               <Grid
                 container
@@ -111,7 +106,7 @@ class Footer extends Component {
                 justifyContent="center"
                 className="bg-blue-000 text-white text-center h-12 justify-end "
               >
-                <Typography variant="h5" className="font-dosis">Esay Car Rental</Typography>
+                <Typography variant="h3" className="font-dosis">Easy Car Rental</Typography>
               </Grid>
               <Grid
                 container
@@ -121,7 +116,7 @@ class Footer extends Component {
                 className="bg-blue-000 h-16"
               >
                 <Typography variant="p" className="text-center">
-                  Copyright © 2022 | Esay Car Rental. All right reserved
+                  Copyright © 2022 | Easy Car Rental. All right Are reserved
                 </Typography>
               </Grid>
             </Grid>
