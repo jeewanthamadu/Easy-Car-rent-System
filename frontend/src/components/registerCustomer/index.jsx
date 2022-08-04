@@ -126,7 +126,7 @@ class RegisterCustomer extends Component {
                       className={'bg-white w-max rounded-lg shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]'}
                       justifyContent={'center'}>
                     <Grid container direction={"row"} justifyContent={"center"}>
-                        <Grid container item xs={12} justifyContent={"center"} className={'pt-20 sm:pt-10'}>
+                        <Grid container item xs={12} justifyContent={"right"} className={'pt-20 sm:pt-10'}>
                             <Link to={'/'} className={'pt-20 sm:pt-10'}>
                                 <IconButton aria-label="delete" size="large" >
                                     <HomeIcon fontSize="inherit"/>
@@ -134,7 +134,7 @@ class RegisterCustomer extends Component {
                             </Link>
                         </Grid>
                         <Grid>
-                            <Typography variant={"h5"} textAlign={"center"}>
+                            <Typography variant={"h3"} textAlign={"center"}>
                                 Customer Registration Form
                             </Typography>
                         </Grid>

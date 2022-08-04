@@ -44,7 +44,7 @@ class NavBar extends Component {
         <nav className="flex justify-between items-center h-16 px-12 bg-zinc-800 bg-opacity-25 p-10 backdrop-blur-sm">
           <div>
             <Typography
-              variant={"h5"}
+              variant={"h4"}
               className="text-white font-dosis font-bold tracking-wide select-none"
             >
               Easy Car Rental
