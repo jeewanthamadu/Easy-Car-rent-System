@@ -1,45 +1,16 @@
 import { Grid, Typography } from "@mui/material";
 import React, { Component } from "react";
 import CommonButton from "../../common/Button";
-import VehicleCard from "../../common/VehicleCard";
-import {Link} from "react-router-dom";
-import vehicleService from "../../../services/VehicleService";
-import VehicleCardTwo from "../../common/VehicleCardTwo";
+import VehicleCard from "../../common/vehicleCard";
 
 class GeneralCars extends Component {
-  constructor(props) {
-    super(props);
-    this.state={
-      vehicles:[],
-    }
-  }
-
-  async loadGeneralCars(){
-    let res = await vehicleService.fetchVehiclesByStatus("Available");
-    let vehicles = []
-    if (res.status===200){
-      res.data.data.filter(vehicle=>vehicle.type.type.includes('General')).slice(0, 4).map((value, index) => {
-        vehicles.push(value)
-      })
-
-      this.setState({
-        vehicles:vehicles
-      })
-
-    }
-  }
-
-  async componentDidMount() {
-    await this.loadGeneralCars();
-  }
-
   render() {
     return (
         <Grid
             container
             justifyContent="flex-start"
             alignItems="stretch"
-            className="backdrop-blur-md pt-10 "
+            className="backdrop-blur-md pt-10"
         >
           <Grid
               item
@@ -69,23 +40,18 @@ class GeneralCars extends Component {
               className="p-6 w-min"
           >
             <Grid container item justifyContent="center" gap={5}>
-              {this.state.vehicles.map((value) => (
-                  <VehicleCard key={value.registration_Number} obj={value}/>
-              ))}
-
-              {/*<VehicleCard />
-            <VehicleCard />
-            <VehicleCard />*/}
+              <VehicleCard />
+              <VehicleCard />
+              <VehicleCard />
+              <VehicleCard />
             </Grid>
             <Grid>
-              <Link to={"/vehicles"}>
-                <CommonButton
-                    size="large"
-                    variant="outlined"
-                    label="See More"
-                    className="text-white border-white hover:bg-white hover:text-black font-bold"
-                />
-              </Link>
+              <CommonButton
+                  size="large"
+                  variant="outlined"
+                  label="See More"
+                  className="text-white border-white hover:bg-white hover:text-black font-bold"
+              />
             </Grid>
           </Grid>
         </Grid>

@@ -127,24 +127,24 @@ class VehicleManage extends Component {
         let updateVehicle={
             "registration_Number": row.registration_Number,
             "brand": row.brand,
-            "colour": row.color,
+            "colour": row.colour,
             "status": row.status,
             "no_Of_Passengers": row.no_Of_Passengers,
             "running_Km":row.running_Km,
             "fuel_Type":row.fuel_Type,
             "transmission_Type": row.transmission_Type,
-            "type": {
-                "vehicleTypeId":row.type.vehicle_Type_Id,
-                "ldw": row.type.loss_Damage_Waiver,
-                "type": row.type.type,
+            "vehicleType": {
+                "vehicle_Type_Id":row.vehicleType.vehicle_Type_Id,
+                "loss_Damage_Waiver": row.vehicleType.loss_Damage_Waiver,
+                "type": row.vehicleType.type,
             },
             "rates": {
-                "rateId":row.rates.rate_Id,
-                "monthlyRate":row.rates.monthly_rate,
-                "dailyRate":row.rates.daily_Rate,
-                "freeKmForaMonth":row.rates.free_Km_Month,
-                "freeKmForaDay": row.rates.free_Km_Day,
-                "pricePerExtraKm": row.rates.extra_Km_Price,
+                "rate_Id":row.rates.rate_Id,
+                "monthly_rate":row.rates.monthly_rate,
+                "daily_Rate":row.rates.daily_Rate,
+                "free_Km_Month":row.rates.free_Km_Month,
+                "free_Km_Day": row.rates.free_Km_Day,
+                "extra_Km_Price": row.rates.extra_Km_Price,
             }
         }
         await this.setState({updateVehicle: updateVehicle});
@@ -230,19 +230,9 @@ class VehicleManage extends Component {
                                 <CommonButton
                                     variant="outlined"
                                     label="Add Vehicle"
-                                    onClick={() => this.setState({popup: true})}
+                                    onClick={() => this.setState({popup: true,isUpdate:false})}
                                     startIcon={<AddIcon/>}
-                                />{/*
-              <CommonButton
-                variant="outlined"
-                label="Add Vehicle Rates"
-                startIcon={<AddIcon />}
-              />
-              <CommonButton
-                variant="outlined"
-                label="Add Vehicle Types"
-                startIcon={<AddIcon />}
-              />*/}
+                                />
                             </Grid>
                             <Grid
                                 container
@@ -276,7 +266,7 @@ class VehicleManage extends Component {
                                 className="font-bold flex-grow"
                                 style={{flexGrow: 1}}
                             >
-                                Add New Vehicle
+                                {this.state.isUpdate ? 'Update' : 'Add New'} Vehicle
                             </Typography>
 
                             <IconButton onClick={() => this.setState({popup: false})}>

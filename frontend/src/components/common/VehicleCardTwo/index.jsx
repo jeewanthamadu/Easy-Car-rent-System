@@ -5,8 +5,6 @@ import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import {Link} from "react-router-dom";
 
-// import car from "../../../assets/img/cover/car_01.jpg"
-
 class VehicleCardTwo extends Component {
     constructor(props) {
         super(props);

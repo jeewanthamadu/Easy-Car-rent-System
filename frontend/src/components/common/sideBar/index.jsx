@@ -18,7 +18,9 @@ class Sidebar extends Component {
         <Grid
             container
             direction={"column"}
-            className="border-r-2 border-neutral-300 min-h-screen"
+            className="border-r-2 border-neutral-300 min-h-screen "
+            bgcolor={"#121212"}
+
         >
           <Grid
               item
@@ -28,49 +30,50 @@ class Sidebar extends Component {
               justifyContent="center"
               alignItems={"center"}
               alignContent="center"
+              bgcolor={"#121212"}
           >
-            <Typography className="text-xl font-bold text-blue-600 font-dosis">
+            <Typography className="text-xl  font-bold text-white font-dosis ">
               Esay Car Rental
             </Typography>
           </Grid>
           <hr className="border border-neutral-300" />
-          <Grid item className="pl-2">
+          <Grid item className="pl-2"  bgcolor={"#121212"}>
             <ul>
-              <Typography variant="p" component={"p"} className="text-xs font-bold text-gray-600 mt-4 mb-1">
+              <Typography variant="p" component={"p"} className="text-xs font-bold text-white mt-4 mb-1">
                 Main
               </Typography>
               <Link to={".."}>
-                <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                  <DashboardIcon className="text-blue-700 text-lg" />
+                <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                  <DashboardIcon className="text-white text-lg" />
                   <Typography
                       variant="h6"
                       component={"span"}
-                      className="text-sm font-semibold text-gray-700"
+                      className="text-sm font-semibold text-white"
                   >
                     Dashboard
                   </Typography>
                 </li>
               </Link>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <CarRentalIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                <CarRentalIcon className="text-white text-lg" />
                 <Typography
                     variant="h6"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Rental Requests
                 </Typography>
               </li>
-              <Typography variant="p" component={"p"} className="text-xs font-bold text-gray-600 mt-4 mb-1">
+              <Typography variant="p" component={"p"} className="text-xs font-bold text-white mt-4 mb-1">
                 Vehicle Manage
               </Typography>
               <Link to={"../vehicleManage"}>
-                <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                  <DirectionsCarIcon className="text-blue-700 text-lg" />
+                <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                  <DirectionsCarIcon className="text-white text-lg" />
                   <Typography
                       variant="h6"
                       component={"span"}
-                      className="text-sm font-semibold text-gray-700"
+                      className="text-sm font-semibold text-white"
                   >
                     Vehicle Manage
                   </Typography>
@@ -78,12 +81,12 @@ class Sidebar extends Component {
               </Link>
 
               <Link to={"../VehicleRates"}>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <DirectionsCarIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                <DirectionsCarIcon className="text-white text-lg" />
                 <Typography
                     variant="h6"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Vehicle Rates
                 </Typography>
@@ -91,28 +94,28 @@ class Sidebar extends Component {
               </Link>
 
               <Link to={"../vehicleType"}>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <DirectionsCarIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                <DirectionsCarIcon className="text-white text-lg" />
                 <Typography
                     variant="h6"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Vehicle Types
                 </Typography>
               </li>
                 </Link>
-              <Typography variant="p" component={"p"} className="text-xs font-bold text-gray-600 mt-4 mb-1">
+              <Typography variant="p" component={"p"} className="text-xs font-bold text-white mt-4 mb-1">
                 Manage
               </Typography>
 
               <Link to={"../driverManage"}>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <PersonOutlineOutlinedIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                <PersonOutlineOutlinedIcon className="text-white text-lg" />
                 <Typography
                     variant="h6"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Driver Manage
                 </Typography>
@@ -120,12 +123,12 @@ class Sidebar extends Component {
               </Link>
 
               <Link to={"../employeeManage"}>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <SupervisorAccountIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                <SupervisorAccountIcon className="text-white text-lg" />
                 <Typography
                     variant="h6"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Employee Manage
                 </Typography>
@@ -133,12 +136,12 @@ class Sidebar extends Component {
               </Link>
 
               <Link to={"../customerManage"}>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <PeopleIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500  m-1 rounded-lg">
+                <PeopleIcon className="text-white text-lg" />
                 <Typography
                     variant="h6"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Customers Manage
                 </Typography>
@@ -148,22 +151,22 @@ class Sidebar extends Component {
               <Typography variant="p" component={"p"} className="text-xs font-bold text-gray-600 mt-4 mb-1">
                 Useful
               </Typography>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <CalculateIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                <CalculateIcon className="text-white text-lg" />
                 <Typography
                     variant="h6"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Calculate Income
                 </Typography>
               </li>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <AssessmentIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                <AssessmentIcon className="text-white text-lg" />
                 <Typography
                     variant="h6"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Daily Summry
                 </Typography>
@@ -171,12 +174,12 @@ class Sidebar extends Component {
               <Typography variant="p" component={"p"} className="text-xs font-bold text-gray-600 mt-4 mb-1">
                 Profile
               </Typography>
-              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-yellow-200 m-1 rounded-lg">
-                <LoginIcon className="text-blue-700 text-lg" />
+              <li className="flex items-center gap-2 p-2 mr-3 cursor-pointer hover:bg-blue-500 m-1 rounded-lg">
+                <LoginIcon className="text-white text-lg" />
                 <Typography
-                    variant="h6"
+                    variant="h5"
                     component={"span"}
-                    className="text-sm font-semibold text-gray-700"
+                    className="text-sm font-semibold text-white"
                 >
                   Logout
                 </Typography>

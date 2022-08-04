@@ -26,17 +26,17 @@ class AddNewVehicle extends Component {
                 "fuel_Type": props.isUpdate ? props.obj.fuel_Type : '',
                 "transmission_Type": props.isUpdate ? props.obj.transmission_Type : '',
                 "vehicleType": {
-                    "vehicle_Type_Id": props.isUpdate ? props.obj.vehicle_Type_Id : '',
-                    "loss_Damage_Waiver": props.isUpdate ? props.obj.loss_Damage_Waiver : '',
-                    "type": props.isUpdate ? props.obj.type : '',
+                    "vehicle_Type_Id": props.isUpdate ? props.obj.vehicleType.vehicle_Type_Id : '',
+                    "loss_Damage_Waiver": props.isUpdate ? props.obj.vehicleType.loss_Damage_Waiver : '',
+                    "type": props.isUpdate ? props.obj.vehicleType.type : '',
                 },
                 "rates": {
-                    "rate_Id": props.isUpdate ? props.obj.rate_Id : '',
-                    "monthly_rate": props.isUpdate ? props.obj.monthly_rate :  '',
-                    "daily_Rate": props.isUpdate ? props.obj.daily_Rate : '',
-                    "free_Km_Month": props.isUpdate ? props.obj.free_Km_Month : '',
-                    "free_Km_Day": props.isUpdate ? props.obj.free_Km_Day : '',
-                    "extra_Km_Price": props.isUpdate ? props.obj.extra_Km_Price : '',
+                    "rate_Id": props.isUpdate ? props.obj.rates.rate_Id : '',
+                    "monthly_rate": props.isUpdate ? props.obj.rates.monthly_rate :  '',
+                    "daily_Rate": props.isUpdate ? props.obj.rates.daily_Rate : '',
+                    "free_Km_Month": props.isUpdate ? props.obj.rates.free_Km_Month : '',
+                    "free_Km_Day": props.isUpdate ? props.obj.rates.free_Km_Day : '',
+                    "extra_Km_Price": props.isUpdate ? props.obj.rates.extra_Km_Price : '',
                 },
 
             },
@@ -81,7 +81,7 @@ class AddNewVehicle extends Component {
     async componentDidMount() {
         await this.fetchRatesDataForSelect()
         await this.fetchVTypeDataForSelect()
-        console.log('mount v')
+        console.log("balanna",this.props.obj)
     }
 
     handleSubmit = async () => {
@@ -246,90 +246,6 @@ class AddNewVehicle extends Component {
                             </Grid>
                             <Grid container direction={'column'} item xs={5.5} gap={'15px'}>
 
-                                {/*<FormControl variant="outlined" className={classes.select}>
-                            <InputLabel>Fuel Type</InputLabel>
-                            <Select
-                                labelId="fuel"
-                                id="fuelType"
-                                value={this.state.formData.fuelType}
-                                // onChange={handleChange}
-                                label="fuel"
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={10}>Petrol</MenuItem>
-                                <MenuItem value={20}>Diesel</MenuItem>
-                                <MenuItem value={20}>Electric</MenuItem>
-                            </Select>
-                        </FormControl>
-                        <FormControl variant="outlined" className={classes.select}>
-                            <InputLabel>Transmission Type </InputLabel>
-                            <Select
-                                labelId="transmission"
-                                id="transmissionType"
-                                value={this.state.formData.transmissionType}
-                                // onChange={handleChange}
-                                label="transmission"
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={10}>Auto</MenuItem>
-                                <MenuItem value={20}>Manual</MenuItem>
-                            </Select>
-                        </FormControl>
-                        <FormControl variant="outlined" className={classes.select}>
-                            <InputLabel>Rates </InputLabel>
-                            <Select
-                                labelId="rates"
-                                id="rates"
-                                value={this.state.formData.rates.rateId}
-                                // onChange={handleChange}
-                                label="rates"
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={10}>Rate001</MenuItem>
-                                <MenuItem value={20}>Rate002</MenuItem>
-                                <MenuItem value={30}>Rate003</MenuItem>
-                            </Select>
-                        </FormControl>
-                        <FormControl variant="outlined" className={classes.select}>
-                            <InputLabel>Vehicle Type </InputLabel>
-                            <Select
-                                labelId="vehicleType"
-                                id="type"
-                                value={this.state.formData.type.vehicle_Type_Id}
-                                // onChange={handleChange}
-                                label="vehicleType"
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={10}>General</MenuItem>
-                                <MenuItem value={20}>Premium</MenuItem>
-                                <MenuItem value={20}>Luxury</MenuItem>
-                            </Select>
-                        </FormControl>
-                        <FormControl variant="outlined" className={classes.select}>
-                            <InputLabel>Status </InputLabel>
-                            <Select
-                                labelId="status"
-                                id="status"
-                                value={this.state.formData.status}
-                                // onChange={handleChange}
-                                label="Status"
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={10}>Available</MenuItem>
-                                <MenuItem value={20}>Under Maintains</MenuItem>
-                                <MenuItem value={30}>Need Maintains</MenuItem>
-                            </Select>
-                        </FormControl>*/}
                                 <TextValidator
                                     select
                                     label="Fuel Type"
@@ -434,7 +350,7 @@ class AddNewVehicle extends Component {
                             <CommonButton
                                 size="large"
                                 variant="contained"
-                                label="Add"
+                                label={this.props.isUpdate ? 'Update' : 'Add'}
                                 type="submit"
                                 className="text-white bg-blue-500 font-bold tracking-wide"
                                 style={{backgroundColor: 'rgba(25, 118, 210, 0.95)', width: '100%'}}

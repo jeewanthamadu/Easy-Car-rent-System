@@ -14,8 +14,28 @@ class NavBar extends Component {
     super(props);
     this.state = {
       open: false,
+      date:new Date().toLocaleDateString(),
+      time:new Date().toLocaleTimeString()
     };
   }
+
+  componentDidMount() {
+    let date = new Date().toLocaleDateString();
+    console.log(date)
+    this.timerID = setInterval(
+        () => this.tick(),
+        1000
+    );
+  }
+
+  tick(){
+    this.setState({
+      date:new Date().toLocaleDateString(),
+      time:new Date().toLocaleTimeString()
+
+    })
+  }
+
 
   render() {
     const { classes } = this.props;
@@ -30,7 +50,13 @@ class NavBar extends Component {
               Easy Car Rental
             </Typography>
           </div>
+
+
           <div className="flex w-1/12 justify-end gap-3">
+            <div className="flex items-center text-white mr-5 text-sm">{this.state.date}
+            </div>
+            <div className="flex items-center text-white mr-5 text-sm">{this.state.time}
+            </div>
             <CommonButton
               size="large"
               variant="outlined"
@@ -40,8 +66,6 @@ class NavBar extends Component {
             />
           </div>
         </nav>
-        {/* <DialogBox title={"Login"} divider open={this.setState}></DialogBox> */}
-        {/* ----  Popup Dialog  ---- */}
 
         <Dialog
           open={this.state.open}
